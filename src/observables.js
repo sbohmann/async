@@ -58,6 +58,7 @@ function spellNumber(number) {
 
 function print(text) {
     console.log('n', text)
+    return Observable()
 }
 
 let boundFunction = Observables.bind(delayNumber, spellNumber, print)
