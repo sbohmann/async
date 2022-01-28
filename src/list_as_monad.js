@@ -29,42 +29,25 @@ const MonadicLists = (function () {
     })
 })()
 
-function Observable() {
-    let valueHandler = undefined
-
-    return {
-        processValue(value) {
-            if (valueHandler !== undefined) {
-                valueHandler(value)
-            }
-        },
-        set onValue(handler) {
-            valueHandler = handler
-        }
-    }
-}
-
 function delayNumber(number) {
-    let result = Observable()
-    setTimeout(() => result.processValue(number), 100 - number * 10)
-    return result
+    return [number]
 }
 
 function spellNumber(number) {
-    let result = Observable()
+    let result = []
     for (let c of number.toString()) {
-        setTimeout(() => result.processValue("the digit [" + c + "]"), 200 - c.charCodeAt(0))
+        result.push("the digit [" + c + "]")
     }
     return result
 }
 
 function print(text) {
     console.log('n', text)
-    return Observable()
+    return []
 }
 
 // let boundFunction = delayNumber >>= spellNumber >>= print
-let boundFunction = Observables.bind(delayNumber, spellNumber, print)
+let boundFunction = MonadicLists.bind(delayNumber, spellNumber, print)
 
 const numbers = [1, 223, 354]
 
