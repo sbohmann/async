@@ -60,10 +60,6 @@ function print(text) {
     console.log('n', text)
 }
 
-function getUserNames(number) {
-    return remoteHost.requestUserNames(number, {scope: userNumber})
-}
-
 let boundFunction = Observables.bind(delayNumber, spellNumber, print)
 
 const numbers = [1, 223, 354]
