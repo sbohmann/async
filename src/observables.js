@@ -60,6 +60,7 @@ function print(text) {
     console.log('n', text)
 }
 
+// let boundFunction = delayNumber >>= spellNumber >>= print
 let boundFunction = Observables.bind(delayNumber, spellNumber, print)
 
 const numbers = [1, 223, 354]
