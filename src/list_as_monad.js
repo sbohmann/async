@@ -40,7 +40,7 @@ function delayNumber(number) {
 function spellNumber(number) {
     let result = []
     for (let c of number.toString()) {
-        result.push("[" + c + "]")
+        result.push(c * 23)
     }
     return result
 }
@@ -48,7 +48,7 @@ function spellNumber(number) {
 function print(text) {
     let result = []
     for (let c of text.toString()) {
-        result.push('char: ' +  c)
+        result.push(c)
     }
     return result
 }
