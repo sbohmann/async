@@ -17,7 +17,7 @@ const MonadicLists = (function () {
             let result = []
             for (let y of f(x)) {
                 for (let value of g(y)) {
-                    result.push(y)
+                    result.push(value)
                 }
             }
             return result
