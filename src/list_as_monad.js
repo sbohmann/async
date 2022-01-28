@@ -1,4 +1,4 @@
-const Observables = (function () {
+const MonadicLists = (function () {
     function bind(...functions) {
         if (functions.length === 0) {
             throw RangeError("Zero functions provided to Observables.bind")
@@ -14,8 +14,10 @@ const Observables = (function () {
 
     function bindTwoFunctions(f, g) {
         return x => {
-            let result = f(x)
-            result.onValue = y=> g(y)
+            let result = []
+            for (let y of f(x)) {
+                result.push(g(y))
+            }
             return result
         }
     }
