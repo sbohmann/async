@@ -30,27 +30,32 @@ const MonadicLists = (function () {
 })()
 
 function delayNumber(number) {
-    return [number]
+    let result = []
+    for (let c of number.toString()) {
+        result.push(Number(c) * 17)
+    }
+    return result
 }
 
 function spellNumber(number) {
     let result = []
     for (let c of number.toString()) {
-        result.push("the digit [" + c + "]")
+        result.push("[" + c + "]")
     }
     return result
 }
 
 function print(text) {
-    console.log('n', text)
-    return []
+    let result = []
+    for (let c of text.toString()) {
+        result.push('char: ' +  c)
+    }
+    return result
 }
 
-// let boundFunction = delayNumber >>= spellNumber >>= print
-let boundFunction = MonadicLists.bind(delayNumber, spellNumber, print)
+// let boundFunction = () => numbers >>= delayNumber >>= spellNumber >>= print
+let boundFunction = MonadicLists.bind(() => numbers, delayNumber, spellNumber, print)
 
 const numbers = [1, 223, 354]
 
-for (let number of numbers) {
-    boundFunction(number)
-}
+console.log(boundFunction(undefined))
