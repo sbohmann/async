@@ -52,7 +52,5 @@ let boundFunction = MonadicLists.bind(delayNumber, spellNumber, print)
 const numbers = [1, 223, 354]
 
 for (let number of numbers) {
-    setTimeout(() => {
-        boundFunction(number)
-    }, 100 - number * 10)
+    boundFunction(number)
 }
